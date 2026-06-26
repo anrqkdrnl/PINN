@@ -2288,7 +2288,7 @@ def _infer_domain_id(name: str) -> int:
 if __name__ == "__main__":
     script_name = os.path.splitext(os.path.basename(__file__))[0]
 
-    EXP_NAME = "exp1_full"
+    EXP_NAME = "exp3_no_b"
 
     save_dir = os.path.join(SAVE_DIR_BASE, script_name + "_" + EXP_NAME)
     os.makedirs(save_dir, exist_ok=True)
@@ -2426,13 +2426,13 @@ if __name__ == "__main__":
     model = HybridModel()
     model.eval()
     # 실험 1: 전체 (논문 그대로 5개 다)
-    model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 1, 1
+    #model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 1, 1
 
     # 실험 2: Ls(seq) 제외
     #model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 0, 1
 
     # 실험 3: Lb(smooth) 제외
-    #model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 1, 0
+    model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 1, 0
 
     # 실험 4: Ls, Lb 동시 제외
     #model.w_phy, model.w_ic, model.w_data, model.w_seq, model.w_b = 1, 1, 1, 0, 0
